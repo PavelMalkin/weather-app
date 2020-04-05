@@ -1,0 +1,15 @@
+{
+  "name": "nodejsforaws",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": "12.16.x"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "momentjs": "^2.0.0",
+    "mysql": "^2.18.1"
+  }
+}
