@@ -68,12 +68,13 @@ let axios = require('axios');
 //         .catch(err => console.log('Error', err))
 // }
 
-
-openweathermap();
-currentweather();
+// openweathermap();
+// currentweather();
 
 // setInterval(weather, 3600000); //time per 30 min 1800000
 // setInterval(forecastopenweathermap, 86400000);
+
+
 
 // http.createServer(function (req, res) {
 //     res.writeHead(200, {'Content-Type':'text/html'});
