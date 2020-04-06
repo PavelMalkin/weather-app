@@ -45,41 +45,41 @@ function currentweather() {
         })
         .catch(err => console.log('Error', err))
 }
-//
-// function openweathermap() {
-//     axios.get('http://api.openweathermap.org/data/2.5/forecast?q=Haifa,il&appid=82d3d463b96e530d4b14b76571e81d3a')
-//         .then(res => {
-//             let result = res.data;
-//
-//             let forecast = result.list.filter(res => {
-//                 let date = moment.unix(res.dt);
-//                 return (date >= moment.utc().endOf('day') && date <= moment.utc().add(1, 'day').endOf('day'))
-//             });
-//
-//             forecast.map(result => {
-//                 let date = result.dt_txt;
-//                 let values = [['Openweathermap forecast', date, result.main.temp - 273.15, result.wind.deg, result.wind.speed, result.wind.gust]];
-//                 con.query(sql, [values], function (err, result, fields) {
-//                     if (err) log += err + ';   ';
-//                     console.log('Openweathermap forecast: ' + result.affectedRows + date);
-//                     log += 'Openweathermap forecast: ' + result.affectedRows + date + ';   ';
-//                 });
-//             });
-//         })
-//         .catch(err => console.log('Error', err))
-// }
 
-// openweathermap();
+function openweathermap() {
+    axios.get('http://api.openweathermap.org/data/2.5/forecast?q=Haifa,il&appid=82d3d463b96e530d4b14b76571e81d3a')
+        .then(res => {
+            let result = res.data;
+
+            let forecast = result.list.filter(res => {
+                let date = moment.unix(res.dt);
+                return (date >= moment.utc().endOf('day') && date <= moment.utc().add(1, 'day').endOf('day'))
+            });
+
+            forecast.map(result => {
+                let date = result.dt_txt;
+                let values = [['Openweathermap forecast', date, result.main.temp - 273.15, result.wind.deg, result.wind.speed, result.wind.gust]];
+                con.query(sql, [values], function (err, result, fields) {
+                    if (err) log += err + ';   ';
+                    console.log('Openweathermap forecast: ' + result.affectedRows + date);
+                    log += 'Openweathermap forecast: ' + result.affectedRows + date + ';   ';
+                });
+            });
+        })
+        .catch(err => console.log('Error', err))
+}
+
+openweathermap();
 currentweather();
 
-setInterval(currentweather, 600000); //time per 30 min 1800000
-// setInterval(forecastopenweathermap, 86400000);
+setInterval(currentweather, 3600000); //time per 30 min 1800000
+setInterval(openweathermap, 86400000);
 
 
 
 // http.createServer(function (req, res) {
 //     res.writeHead(200, {'Content-Type':'text/html'});
-//     res.write(html);
+//     res.write(log);
 //     res.end();
 // }).listen(port);
 
