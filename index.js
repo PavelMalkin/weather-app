@@ -15,12 +15,12 @@ var html = fs.readFileSync('index.html');
 // });
 
 
-let con = mysql.createConnection({
-    host: "localhost",
-    user: "User1",
-    password: "admintest",
-    database: 'mydb'
-});
+// let con = mysql.createConnection({
+//     host: "localhost",
+//     user: "User1",
+//     password: "admintest",
+//     database: 'mydb'
+// });
 
 let currentweather = {
     'method': 'GET',
@@ -54,11 +54,11 @@ function weather() {
         let result = JSON.parse(res.body);
         let date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
         let values = [['Current weather', date, result.main.temp - 273.15, result.wind.deg, result.wind.speed, result.wind.gust]];
-        con.query(sql, [values], function (err, result, fields) {
-            if (err) log += err;
-            console.log('Current weather: ' + result.affectedRows + date);
-            log += 'Current weather: ' + result.affectedRows + date + ';   ';
-        });
+        // con.query(sql, [values], function (err, result, fields) {
+        //     if (err) log += err;
+        //     console.log('Current weather: ' + result.affectedRows + date);
+        //     log += 'Current weather: ' + result.affectedRows + date + ';   ';
+        // });
     });
 }
 
@@ -75,11 +75,11 @@ function forecastopenweathermap() {
         forecast.map(result => {
             let date = result.dt_txt;
             let values = [['Openweathermap forecast', date, result.main.temp - 273.15, result.wind.deg, result.wind.speed, result.wind.gust]];
-            con.query(sql, [values], function (err, result, fields) {
-                if (err) log += err + ';   ';
-                console.log('Openweathermap forecast: ' + result.affectedRows + date);
-                log += 'Openweathermap forecast: ' + result.affectedRows + date + ';   ';
-            });
+            // con.query(sql, [values], function (err, result, fields) {
+            //     if (err) log += err + ';   ';
+            //     console.log('Openweathermap forecast: ' + result.affectedRows + date);
+            //     log += 'Openweathermap forecast: ' + result.affectedRows + date + ';   ';
+            // });
         });
 
     });
