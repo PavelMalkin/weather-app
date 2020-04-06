@@ -7,6 +7,7 @@ var moment = require('moment');
 var port = process.env.PORT || 3000;
 var log = 'First log';
 var html = fs.readFileSync('index.html');
+let axios = require('axios');
 
 
 // var j = schedule.scheduleJob('30 * * * * *', function () {
@@ -28,13 +29,33 @@ let con = mysql.createConnection({
 //     'headers': {
 //     }
 // };
+
+function currentweather() {
+    axios.get('http://api.openweathermap.org/data/2.5/weather?q=Haifa,il&appid=82d3d463b96e530d4b14b76571e81d3a')
+        .then(res => {
+            let result = res.data;
+            let date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
+            let values = [['Current weather', date, result.main.temp - 273.15, result.wind.deg, result.wind.speed, result.wind.gust]];
+            con.query(sql, [values], function (err, result, fields) {
+                if (err) log += err;
+                console.log('Current weather: ' + result.affectedRows + date);
+                log += 'Current weather: ' + result.affectedRows + date + ';   ';
+            });
+
+        })
+        .catch(err => console.log('Error', err))
+}
+
+
+currentweather();
+
 //
 // let openweathermap = {
 //     'method': 'GET',
 //     'url': 'http://api.openweathermap.org/data/2.5/forecast?q=Haifa,il&appid=82d3d463b96e530d4b14b76571e81d3a'
 // };
 //
-// let sql = 'INSERT INTO weather1 (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
+let sql = 'INSERT INTO weather1 (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
 //
 // con.connect(function (err) {
 //     if (err) log += err + ';   ';
