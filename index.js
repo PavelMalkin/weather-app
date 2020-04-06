@@ -1,7 +1,7 @@
 var http = require('http');
 var fs = require('fs')
 var mysql = require('mysql');
-var request = require('request');
+// var request = require('request');
 var moment = require('moment');
 // var schedule = require('node-schedule');
 var port = process.env.PORT || 3000;
@@ -92,6 +92,9 @@ var html = fs.readFileSync('index.html');
 //     res.write(html);
 //     res.end();
 // }).listen(port);
+
+
+// test code from template
 
 
 var log = function(entry) {
