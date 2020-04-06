@@ -10,10 +10,10 @@ var html = fs.readFileSync('index.html');
 let axios = require('axios');
 
 
-var j = schedule.scheduleJob('30 * * * * *', function () {
-  let d = new moment().format('HH:MM');
-  console.log('The answer to life, the universe, and everything!' + d );
-});
+// var j = schedule.scheduleJob('30 * * * * *', function () {
+//   let d = new moment().format('HH:MM');
+//   console.log('The answer to life, the universe, and everything!' + d );
+// });
 
 let sql = 'INSERT INTO weather1 (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
 
