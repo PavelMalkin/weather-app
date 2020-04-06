@@ -69,7 +69,7 @@ function currentweather() {
 // }
 
 // openweathermap();
-// currentweather();
+currentweather();
 
 // setInterval(weather, 3600000); //time per 30 min 1800000
 // setInterval(forecastopenweathermap, 86400000);
