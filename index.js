@@ -10,24 +10,24 @@ var html = fs.readFileSync('index.html');
 let axios = require('axios');
 
 
-// var j = schedule.scheduleJob('30 * * * * *', function () {
-//   let d = new moment().format('HH:MM');
-//   console.log('The answer to life, the universe, and everything!' + d );
-// });
+var j = schedule.scheduleJob('30 * * * * *', function () {
+  let d = new moment().format('HH:MM');
+  console.log('The answer to life, the universe, and everything!' + d );
+});
 
-// let sql = 'INSERT INTO weather1 (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
-//
-// let con = mysql.createConnection({
-//     host: "localhost",
-//     user: "User1",
-//     password: "admintest",
-//     database: 'mydb'
-// });
-//
-// con.connect(function (err) {
-//     if (err) log += err + ';   ';
-//     console.log("Connected!");
-// });
+let sql = 'INSERT INTO weather1 (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
+
+let con = mysql.createConnection({
+    host: "localhost",
+    user: "User1",
+    password: "admintest",
+    database: 'mydb'
+});
+
+con.connect(function (err) {
+    if (err) log += err + ';   ';
+    console.log("Connected!");
+});
 //
 // function currentweather() {
 //     axios.get('http://api.openweathermap.org/data/2.5/weather?q=Haifa,il&appid=82d3d463b96e530d4b14b76571e81d3a')
