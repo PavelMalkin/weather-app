@@ -1,10 +1,12 @@
 var http = require('http');
+var fs = require('fs')
 var mysql = require('mysql');
 var request = require('request');
 var moment = require('moment');
 // var schedule = require('node-schedule');
-var port = 3000;
+var port = process.env.PORT || 3000;
 var log = 'First log';
+var html = fs.readFileSync('index.html');
 
 
 // var j = schedule.scheduleJob('30 * * * * *', function () {
@@ -87,6 +89,6 @@ var log = 'First log';
 
 http.createServer(function (req, res) {
     res.writeHead(200, {'Content-Type':'text/html'});
-    res.write(log);
+    res.write(html);
     res.end();
-}).listen(80);
+}).listen(port);
