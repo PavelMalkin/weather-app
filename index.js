@@ -15,7 +15,7 @@ let axios = require('axios');
 //   console.log('The answer to life, the universe, and everything!' + d );
 // });
 
-let sql = 'INSERT INTO weather (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
+let sql = 'INSERT INTO weathertest (Name, Date, Temperature, WindDirection, WindSpeed, WindGust) VALUES ?';
 
 let con = mysql.createConnection({
     host: "zwgaqwfn759tj79r.chr7pe7iynqr.eu-west-1.rds.amazonaws.com", //localhost
@@ -69,11 +69,11 @@ function openweathermap() {
         .catch(err => console.log('Error', err))
 }
 
-openweathermap();
+// openweathermap();
 currentweather();
 
-setInterval(currentweather, 3600000); //time per 30 min 1800000
-setInterval(openweathermap, 86400000);
+setInterval(currentweather, 6000); //time per 30 min 1800000
+// setInterval(openweathermap, 86400000);
 
 
 
