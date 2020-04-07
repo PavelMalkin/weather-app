@@ -69,11 +69,11 @@ function openweathermap() {
         .catch(err => console.log('Error', err))
 }
 
-// openweathermap();
+openweathermap();
 currentweather();
 
-setInterval(currentweather, 6000); //time per 30 min 1800000
-// setInterval(openweathermap, 86400000);
+setInterval(currentweather, 1800000); //time per 30 min 1800000
+setInterval(openweathermap, 86400000);
 
 
 
